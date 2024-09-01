@@ -32,6 +32,20 @@ A running MySQL instance that the container can connect to.
 4. Run the Python Container:
 `docker run --network mynetwork --name runtestcases anshinfo/runtestcases:latest`
 
+````bash
+#### Build the Docker Image Locally
+
+If you want to build the Docker image yourself, you can follow these steps:
+
+1. Clone the repository or ensure you have the Dockerfile and related source files.
+   
+2. Navigate to the directory containing the Dockerfile.
+   
+3. Use the following command to build the image:
+
+`docker build -t runtestcases .`
+````
+
 ### Environment Variables
 
 The container can be configured using the following environment variables:
