@@ -1,17 +1,14 @@
-# Python MySQL Test Runner
+# Python MySQL Test Cases Runner Using Docker
 
 ### Description
 This Docker image provides an isolated environment to run Python code that interacts with a MySQL database. The container fetches questions and test cases from the database and executes the provided Python code against these test cases. The image is built on the official slim Python 3.10 image, keeping it lightweight and optimized for running test cases in a controlled environment.
 
 ### Features
 
-Lightweight: Based on the python:3.10-slim image, keeping the image size minimal.
-
-MySQL Integration: Connects to a MySQL database to fetch test cases and execute them against user-provided Python code.
-
-Isolated Environment: Runs Python code in an isolated environment, ensuring a consistent and safe execution context.
-
-Flexible Execution: Easily adaptable with customizable environment variables for database connections.
+- Lightweight: Based on the python:3.10-slim image, keeping the image size minimal.
+- MySQL Integration: Connects to a MySQL database to fetch test cases and execute them against user-provided Python code.
+- Isolated Environment: Runs Python code in an isolated environment, ensuring a consistent and safe execution context.
+- Flexible Execution: Easily adaptable with customizable environment variables for database connections.
 
 ### Prerequisites
 
@@ -37,30 +34,27 @@ A running MySQL instance that the container can connect to.
 
 If you want to build the Docker image yourself, you can follow these steps:
 
-1. Clone the repository or ensure you have the Dockerfile and related source files.
-   
-2. Navigate to the directory containing the Dockerfile.
-   
+1. Clone the repository or ensure you have the Dockerfile and related source files.  
+2. Navigate to the directory containing the Dockerfile.   
 3. Use the following command to build the image:
 
-`docker build -t runtestcases .`
+docker build -t runtestcases .
 ````
 
 ### Environment Variables
 
 The container can be configured using the following environment variables:
 
-MYSQL_HOST: The hostname of the MySQL server (default: mysql).
-
-MYSQL_USER: MySQL username (default: root).
-
-MYSQL_PASSWORD: Password for the MySQL user.
-
-MYSQL_DATABASE: The MySQL database name to connect to.
+- MYSQL_HOST: The hostname of the MySQL server (default: mysql).
+- MYSQL_USER: MySQL username (default: root).
+- MYSQL_PASSWORD: Password for the MySQL user.
+- MYSQL_DATABASE: The MySQL database name to connect to.
 
 These variables can be set when running the container, for example:
 
-`docker run --network mynetwork -e MYSQL_HOST=mysql -e MYSQL_USER=root -e MYSQL_PASSWORD=Passwd -e MYSQL_DATABASE=DB anshinfo/runtestcases:latest`
+```bash
+docker run --network mynetwork -e MYSQL_HOST=mysql -e MYSQL_USER=root -e MYSQL_PASSWORD=Passwd -e MYSQL_DATABASE=DB anshinfo/runtestcases:latest
+```
 
 ### Usage
 
@@ -71,16 +65,17 @@ Passing Code and Question ID: Modify the script invocation or pass the required 
 ### Example Commands
 To pass specific arguments or override the default command, you can run:
 
-`docker run --network mynetwork anshinfo/runtestcases python runtestcases.py <question_id> <code>`
+```bash
+docker run --network mynetwork anshinfo/runtestcases python runtestcases.py <question_id> <code>
+```
 
 ### Troubleshooting
 
-Connection Issues: Ensure that the Python and MySQL containers are on the same network.
+- Connection Issues: Ensure that the Python and MySQL containers are on the same network.
 
-Environment Variables: Verify that the environment variables are correctly set and match your MySQL setup.
+- Environment Variables: Verify that the environment variables are correctly set and match your MySQL setup.
 
-Logs: Use docker logs <container_name> to view detailed error logs if the script fails to run as expected.
+- Logs: Use docker logs <container_name> to view detailed error logs if the script fails to run as expected.
 
-License
+### License
 This project is licensed under the MIT License - see the LICENSE file for details.
-
